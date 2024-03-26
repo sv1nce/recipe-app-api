@@ -9,7 +9,9 @@ WORKDIR /app
 EXPOSE 8000
 
 ARG DEV=false
-RUN apk update && \
+
+RUN apk update &&  \
+    apk add --no-cache bash &&  \
     apk add --no-cache postgresql-client && \
     apk add --update --virtual .tmp-build-deps \
       build-base postgresql-dev musl-dev && \
